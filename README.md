@@ -1,0 +1,2 @@
+# ANALIZADOR-DE-COMUNICACION
+Proyecto Semestral de IA
