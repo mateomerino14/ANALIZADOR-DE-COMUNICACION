@@ -53,7 +53,7 @@ def analizar(texto, duracion_segundos=None, segmentos=None):
         "pausas": analizar_pausas(segmentos or []),
         "claridad": analizar_claridad(texto_normalizado, palabras),
         "coherencia": analizar_coherencia(texto_normalizado, palabras),
-        "sentimiento": analizar_sentimiento(texto_normalizado, palabras),
+        "sentimiento": analizar_sentimiento(palabras),
         "asertividad": analizar_asertividad(texto_normalizado, palabras),
         "complejidad": analizar_complejidad(texto_normalizado, palabras),
     }
@@ -120,7 +120,6 @@ def analizar_repeticiones(palabras):
     return {
         "en_exceso": en_exceso,
         "cercanas": cercanas[:MAXIMO_REPETICIONES_CERCANAS],
-        "top10": dict(conteo.most_common(10)),
         "indice_redundancia": round(repetidas / max(len(contenido), 1), 3),
         "total_contenido": len(contenido),
     }
@@ -279,7 +278,7 @@ def analizar_coherencia(texto, palabras):
     }
 
 
-def analizar_sentimiento(texto, palabras):
+def analizar_sentimiento(palabras):
     positivas = [palabra for palabra in palabras if palabra in PALABRAS_POSITIVAS]
     negativas = [palabra for palabra in palabras if palabra in PALABRAS_NEGATIVAS]
     polaridad = (len(positivas) - len(negativas)) / max(len(positivas) + len(negativas), 1)
@@ -296,7 +295,6 @@ def analizar_sentimiento(texto, palabras):
         "polaridad": round(polaridad, 3),
         "palabras_pos": len(positivas),
         "palabras_neg": len(negativas),
-        "palabras_duda": sum(contar_frases(EXPRESIONES_DUDA, texto).values()),
         "ratio_positivo": round(len(positivas) / len(palabras) * 100, 1),
         "ratio_negativo": round(len(negativas) / len(palabras) * 100, 1),
         "ejemplos_pos": sorted(set(positivas))[:MAXIMO_EJEMPLOS],
