@@ -7,6 +7,7 @@ from nucleo.analizador import (
     analizar_velocidad,
     calcular_mattr,
     clasificar_velocidad,
+    contar_dobles_negaciones,
     indice_fernandez_huerta,
 )
 
@@ -68,3 +69,11 @@ def test_mattr_ventana():
 def test_indice_legibilidad_acotado():
     assert indice_fernandez_huerta(1, 1) == 100
     assert indice_fernandez_huerta(4, 60) == 0
+
+
+def test_doble_negacion():
+    assert contar_dobles_negaciones("no quiero que no vengas") == 1
+
+
+def test_la_confirmacion_no_es_doble_negacion():
+    assert contar_dobles_negaciones("no sé, ¿no? es raro") == 0

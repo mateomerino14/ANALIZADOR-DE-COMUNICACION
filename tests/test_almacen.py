@@ -36,3 +36,10 @@ def test_reporte_en_texto():
     assert "Sesión     : Prueba" in texto
     assert "'eh': 1 vez" in texto
     assert "RECOMENDACIONES" in texto
+
+
+def test_reporte_en_texto_incluye_el_detalle_del_lenguaje():
+    texto = reporte_a_texto(generar_reporte(analizar(TEXTO)))
+    for seccion in ("VOCABULARIO", "CLARIDAD Y COMPLEJIDAD", "COHERENCIA, ASERTIVIDAD Y TONO"):
+        assert seccion in texto
+    assert "VOZ Y PAUSAS" not in texto
