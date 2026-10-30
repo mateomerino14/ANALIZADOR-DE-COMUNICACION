@@ -12,10 +12,12 @@ EXPRESA — convenciones de ramas, commits y codificación.
 | `develop` | Integración de los cambios terminados |
 | `feature/<tema>` | Nueva funcionalidad o reestructuración, en `snake_case` (ej. `feature/deteccion_muletillas`) |
 | `fix/<tema>` | Corrección puntual sobre `develop` |
+| `docs/<tema>` | Cambios solo de documentación |
+| `chore/<tema>` | Configuración, dependencias o integración continua |
 
 ### Flujo
 
-1. Cada cambio se desarrolla en su rama `feature/<tema>` o `fix/<tema>`, creada desde `develop`.
+1. Cada cambio se desarrolla en su propia rama, creada desde `develop`.
 2. Al terminarlo se abre un Pull Request hacia `develop`. Las pruebas de GitHub Actions deben pasar antes del merge.
 3. Cuando `develop` reúne una versión completa, se abre un Pull Request de `develop` hacia `main`.
 
