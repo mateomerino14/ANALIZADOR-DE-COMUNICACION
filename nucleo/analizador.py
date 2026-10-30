@@ -221,6 +221,12 @@ def indice_fernandez_huerta(silabas_por_palabra, palabras_por_oracion):
     return max(0.0, min(100.0, indice))
 
 
+# "¿no?" pide confirmacion, no niega; si se contara, "no sé, ¿no?" pareceria doble negacion
+def contar_dobles_negaciones(texto):
+    sin_confirmaciones = re.sub(r"¿\s*no\s*\?", " ", texto)
+    return len(re.findall(r"\bno\b[^.!?¿]{1,30}\bno\b", sin_confirmaciones))
+
+
 def analizar_claridad(texto, palabras):
     lista_oraciones = oraciones(texto)
     palabras_por_oracion = len(palabras) / max(len(lista_oraciones), 1)
@@ -235,7 +241,7 @@ def analizar_claridad(texto, palabras):
         "silabas_prom_palabra": round(silabas_por_palabra, 2),
         "indice_legibilidad": round(indice, 1),
         "nivel_legibilidad": nivel_legibilidad(indice),
-        "dobles_negaciones": len(re.findall(r"\bno\b[^.!?]{1,30}\bno\b", texto)),
+        "dobles_negaciones": contar_dobles_negaciones(texto),
     }
 
 
