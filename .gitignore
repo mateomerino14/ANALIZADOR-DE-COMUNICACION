@@ -1,0 +1,24 @@
+# Entorno
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Generados por la aplicacion
+reportes/
+temporal/
+
+# Audios de prueba personales
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+
+# Editor / sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.pytest_cache/
+.ruff_cache/
