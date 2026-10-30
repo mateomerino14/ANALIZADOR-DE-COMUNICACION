@@ -35,9 +35,12 @@ El detalle está en [Cambios respecto a la entrega](#cambios-respecto-a-la-entre
 | Claridad | Índice de legibilidad de Fernández Huerta y largo de las oraciones |
 | Coherencia | Conectores lógicos y continuidad temática entre las dos mitades del discurso |
 | Asertividad | Balance entre expresiones asertivas y de duda |
+| Complejidad | Proporción de palabras largas y de oraciones compuestas |
+| Tono emocional | Polaridad según palabras positivas y negativas |
 | Tono de voz | Pitch, volumen, expresividad (centroide espectral) y ritmo, con librosa |
 
-Cada aspecto da una subpuntuación de 0 a 100 y la puntuación global las pondera:
+Fluidez, vocabulario, claridad, coherencia y asertividad dan una subpuntuación de 0 a 100,
+y la puntuación global las pondera:
 fluidez 30 %, vocabulario 20 %, claridad 20 %, coherencia 15 % y asertividad 15 %.
 
 ### Detección de muletillas
@@ -151,15 +154,18 @@ Pull Request.
 - Un discurso con muchas muletillas distintas, ninguna repetida tres veces,
   recibía "Excelente comunicación"; ahora se recomienda según la densidad total.
 - Si fallaba el análisis, la interfaz lanzaba otro error al intentar mostrarlo.
+- Una confirmación como `¿no?` se contaba como doble negación.
 
 **Estructura y calidad**
 
 - Se quitó del repositorio el entorno virtual, cachés, audios y reportes de prueba.
 - Se eliminó la descarga automática de ffmpeg desde internet durante la ejecución.
 - Lógica separada de la interfaz en `nucleo/`, utilizable también desde la terminal.
-- La vista del reporte se comparte entre la pestaña de análisis y el historial.
+- La vista del reporte se comparte entre la pestaña de análisis y el historial, y muestra
+  todos los datos que se calculan: vocabulario, claridad, complejidad, coherencia,
+  asertividad, tono emocional, acústica y el detalle de cada pausa. El TXT tiene el mismo detalle.
 - Rutas con `pathlib` relativas al proyecto, sin depender de la carpeta desde donde
   se ejecuta.
 - Valores mágicos movidos a constantes con nombre, sin código comentado ni impresiones
   de depuración.
-- 47 pruebas con pytest, lint con ruff e integración continua en GitHub Actions.
+- 50 pruebas con pytest, lint con ruff e integración continua en GitHub Actions.

@@ -3,6 +3,7 @@ import pytest
 
 from config import FRECUENCIA_MUESTREO
 from nucleo import flujo
+from nucleo.almacen import reporte_a_texto
 
 soundfile = pytest.importorskip("soundfile")
 pytest.importorskip("librosa")
@@ -52,6 +53,7 @@ def test_flujo_de_audio(tmp_path, monkeypatch):
     assert reporte["muletillas"]["total"] == 4
     assert reporte["tono"]["disponible"]
     assert reporte["tono"]["pitch"]["tipo"] == "Media"
+    assert "VOZ Y PAUSAS" in reporte_a_texto(reporte)
     assert avisos
 
 

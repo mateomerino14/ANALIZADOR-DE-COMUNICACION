@@ -9,6 +9,7 @@ TEXTO_SUAVE = "#8a8a8a"
 BORDE = "#e8e6e1"
 GRABAR = "#ffb3ba"
 GRABANDO = "#ff8a94"
+TEXTO_ALERTA = "#b8434f"
 
 COLOR_EXCELENTE = "#8fd9c4"
 COLOR_BUENO = "#a7c7e7"
