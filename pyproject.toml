@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+# reglas.md: se prefieren bloques if/else explicitos antes que el operador ternario
+ignore = ["SIM108"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "datos", "interfaz", "nucleo"]
+split-on-trailing-comma = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

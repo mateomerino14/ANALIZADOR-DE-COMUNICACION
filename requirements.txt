@@ -1,0 +1,15 @@
+# Audio: grabacion y lectura
+sounddevice
+soundfile
+
+# Transcripcion de voz a texto (local, sin internet despues de la primera descarga)
+openai-whisper
+torch
+
+# Analisis acustico
+librosa
+numpy
+
+# Pruebas y estilo
+pytest
+ruff
