@@ -1,5 +1,7 @@
 # EXPRESA — Analizador de comunicación
 
+[![CI](https://github.com/mateomerino14/ANALIZADOR-DE-COMUNICACION/actions/workflows/ci.yml/badge.svg)](https://github.com/mateomerino14/ANALIZADOR-DE-COMUNICACION/actions/workflows/ci.yml)
+
 Aplicación de escritorio que transcribe la voz con Whisper y analiza la forma de
 hablar: detecta muletillas, mide la velocidad, las pausas, el vocabulario, la
 claridad y el tono de voz, y genera un reporte con recomendaciones y ejercicios
