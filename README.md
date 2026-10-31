@@ -42,6 +42,8 @@ El detalle está en [Cambios respecto a la entrega](#cambios-respecto-a-la-entre
 Fluidez, vocabulario, claridad, coherencia y asertividad dan una subpuntuación de 0 a 100,
 y la puntuación global las pondera:
 fluidez 30 %, vocabulario 20 %, claridad 20 %, coherencia 15 % y asertividad 15 %.
+En audio se muestra además la subpuntuación de pausas, que no entra en la global
+porque un texto escrito no la tiene.
 
 ### Detección de muletillas
 
@@ -75,10 +77,19 @@ ANALIZADOR-DE-COMUNICACION/
 │   ├── reporte.py          Recomendaciones y ejercicios
 │   ├── almacen.py          Guardado del reporte en JSON y TXT
 │   └── flujo.py            Une los pasos para audio y para texto
-├── datos/                  Diccionarios: muletillas, léxico y ejercicios
-├── interfaz/               Tkinter: pestañas, componentes y vista del reporte
+├── datos/
+│   ├── muletillas.py       Más de 300 muletillas en 10 categorías
+│   ├── lexico.py           Stopwords, conectores y palabras de duda, asertivas y de tono
+│   └── ejercicios.py       Banco de ejercicios y cuándo recomendar cada uno
+├── interfaz/               Tkinter
+│   ├── app.py              Ventana principal y pestañas de audio y texto
+│   ├── historial.py        Pestaña de reportes guardados
+│   ├── vista_reporte.py    Reporte completo, compartido por ambas pestañas
+│   ├── componentes.py      Medidor, barras, tarjetas y panel desplazable
+│   └── tema.py             Colores y fuentes
 ├── tests/
 ├── reportes/               Reportes generados (no se suben)
+├── temporal/               Última grabación del micrófono (no se sube)
 └── reglas.md               Estándares de ramas, commits y código
 ```
 
@@ -118,7 +129,7 @@ EXPRESA_MODELO=small python main.py
 ```
 
 Cada análisis queda en `reportes/` como JSON, que alimenta la pestaña de
-historial, y como TXT para leerlo o imprimirlo.
+historial, y como TXT con el mismo detalle que la pantalla, para leerlo o imprimirlo.
 
 ## Pruebas
 
@@ -128,8 +139,8 @@ ruff check .
 ```
 
 Las pruebas no necesitan Whisper ni micrófono: el flujo de audio se prueba con
-voz sintética y un transcriptor falso. GitHub Actions las ejecuta en cada push y
-Pull Request.
+voz sintética y un transcriptor falso. GitHub Actions ejecuta el lint y las pruebas
+en Python 3.10 y 3.12 en cada push y Pull Request.
 
 ## Cambios respecto a la entrega
 
